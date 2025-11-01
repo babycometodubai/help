@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مساعدات - منصة الإغاثة</title>
+  <meta name="description" content="منصة إغاثة عربية — جمع تبرعات، متطوعين، وقصص إنسانية">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">م</div>
+        <div>
+          <div style="font-weight:700">مساعدات</div>
+          <div class="muted" style="font-size:12px">منصة إغاثة إنسانية</div>
+        </div>
+      </div>
+      <nav style="margin-inline-start:auto">
+        <ul>
+          <li><a href="#services">الخدمات</a></li>
+          <li><a href="#stories">القصص</a></li>
+          <li><a href="#volunteer">تطوع</a></li>
+          <li><a href="#help">طلب مساعدة</a></li>
+          <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+      </nav>
+      <button class="menu-btn" aria-label="قائمة" onclick="toggleMenu()">☰</button>
+      <a class="cta-donate" href="#donate">تبرع الآن</a>
+      <a class="cta-help" href="#help" style="margin-inline-start:8px">طلب مساعدة</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>ساعد، تبرع، أو تطوع — احجز بصمتك الإنسانية</h1>
+        <p class="lead">نحن نصل للمحتاجين بسرعة وشفافية. شارك اليوم لتغيير حياة أسر كاملة.</p>
+        <div class="donate-row">
+          <input class="donate-input" id="amount" type="number" placeholder="المبلغ (د.أ)" min="1">
+          <button class="cta-donate" onclick="donate()">تبرع الآن</button>
+        </div>
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><small>مستفيدين</small><strong id="s1">12,430</strong></div>
+          <div class="stat"><small>مشاريع</small><strong id="s2">98</strong></div>
+          <div class="stat"><small>متطوعون</small><strong id="s3">3,400</strong></div>
+        </div>
+        <p class="muted" style="margin-top:10px;font-size:13px">شفافية كاملة — تقارير دورية وصور ميدانية.</p>
+      </div>
+
+      <div class="hero-visual" role="img" aria-label="صورة فريق إغاثة">
+        <div class="overlay">
+          <div style="font-weight:700;font-size:18px">قصة نجاح — عائلة عادت بابتسامة</div>
+          <div class="muted" style="font-size:13px;margin-top:6px">تبرعاتكم أصلحت منزل العائلة وساعدت الأطفال بالمدرسة.</div>
+        </div>
+      </div>
+    </section>
+    <section id="services">
+      <h2>الخدمات</h2>
+      <div class="grid-3" style="margin-top:12px">
+        <div class="card">
+          <h3>مواد إغاثية فورية</h3>
+          <p class="muted">توزيع طارئ للغذاء، الماء، والبطانيات في المناطق المتضررة.</p>
+        </div>
+        <div class="card">
+          <h3>دعم صحي</h3>
+          <p class="muted">عيادات متنقلة وبرامج صحية للأمهات والأطفال.</p>
+        </div>
+        <div class="card">
+          <h3>تمكين مجتمعي</h3>
+          <p class="muted">مشاريع تعليمية ومصدر رزق للمحتاجين.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stories">
+      <h2>القصص</h2>
+      <div class="card" style="margin-top:12px">
+        <div class="story">
+          <img src="images/rebuild.jpeg" alt="صورة قصة 1">
+          <div>
+            <h4>منزل جديد — بداية جديدة</h4>
+            <p class="muted">بفضل تبرعاتكم، أعادت هذه العائلة بناء منزلها بعد الفيضانات.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="volunteer">
+      <h2>تطوع معنا</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="muted">انضم لفريقنا الميداني أو ساعد عبر المهارات الرقمية.</p>
+        <form onsubmit="submitVolunteer(event)">
+          <div class="form-row">
+            <input id="vname" required placeholder="الاسم الكامل">
+            <input id="vphone" required placeholder="الهاتف أو البريد الإلكتروني">
+          </div>
+          <div style="margin-top:10px">
+            <select id="vrole">
+              <option value="ميداني">ميداني</option>
+              <option value="لوجستي">لوجستي</option>
+              <option value="تقني">تقني</option>
+            </select>
+          </div>
+          <div style="margin-top:10px">
+            <textarea id="vmsg" rows="4" placeholder="رسالة قصيرة (اختياري)"></textarea>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button type="submit" class="cta-donate">أرسل</button>
+            <button type="button" onclick="openContact()" style="background:#fff;border:1px solid #e6e7ea;padding:10px;border-radius:10px">تواصل معنا</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="help">
+      <h2>طلب مساعدة</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="muted">يمكنك إرسال طلب المساعدة هنا، وسنقوم بالتواصل معك في أسرع وقت ممكن.</p>
+        <form onsubmit="submitHelp(event)">
+          <div class="form-row">
+            <input id="hname" required placeholder="الاسم الكامل">
+            <input id="hcontact" required placeholder="الهاتف أو البريد الإلكتروني">
+          </div>
+          <div style="margin-top:10px">
+            <textarea id="hmsg" rows="4" placeholder="صف طلبك باختصار"></textarea>
+          </div>
+          <div style="margin-top:12px">
+            <button type="submit" class="cta-help">إرسال الطلب</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>اتصل بنا</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="muted">للتبرعات الكبيرة أو الشراكات، تواصل معنا مباشرة.</p>
+        <p><strong>البريد:</strong> info@example.org — <strong>هاتف:</strong> +962-7-0000-0000</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container center">
+      <div style="margin-bottom:8px">© <strong>مساعدات</strong> — منصة إغاثة إنسانية</div>
+      <div class="muted" style="font-size:13px">سياسة الخصوصية · الشفافية · تقارير مالية</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
